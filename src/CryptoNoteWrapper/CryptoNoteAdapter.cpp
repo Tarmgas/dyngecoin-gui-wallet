@@ -33,7 +33,7 @@ namespace WalletGui {
 namespace {
 
 const int AUTO_CONNECTION_INTERVAL = 200;
-const char OLD_CORE_LOG_FILE_NAME[] = "wrkzcoinwallet.log";
+const char OLD_CORE_LOG_FILE_NAME[] = "dyngecoinwallet.log";
 
 }
 
@@ -108,7 +108,7 @@ bool CryptoNoteAdapter::isValidPaymentId(const QString& _paymentId) const {
 }
 
 QString CryptoNoteAdapter::getCurrencyTicker() const {
-  return "WRKZ";
+  return "DYNGE";
 }
 
 quint64 CryptoNoteAdapter::getMinimalFee() const {

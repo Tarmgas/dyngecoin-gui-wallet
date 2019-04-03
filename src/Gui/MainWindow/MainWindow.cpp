@@ -74,8 +74,8 @@ namespace WalletGui {
 namespace {
 
 const int MAX_RECENT_WALLET_COUNT = 6;
-const char COMMUNITY_FORUM_URL[] = "https://www.wrkz.work";
-const char REPORT_ISSUE_URL[] = "https://github.com/wrkzdev";
+const char COMMUNITY_FORUM_URL[] = "https://dyngepeng.zapto.og/dyngeforum";
+const char REPORT_ISSUE_URL[] = "https://github.com/Tarmgas";
 
 const char DONATION_URL_DONATION_TAG[] = "donation";
 const char DONATION_URL_LABEL_TAG[] = "label";
@@ -121,7 +121,7 @@ MainWindow::MainWindow(ICryptoNoteAdapter* _cryptoNoteAdapter, IAddressBookManag
   m_addRecipientAction(new QAction(this)), m_styleSheetTemplate(_styleSheetTemplate), m_walletStateMapper(new QDataWidgetMapper(this)),
   m_syncMovie(new QMovie(Settings::instance().getCurrentStyle().getWalletSyncGifFile(), QByteArray(), this)) {
   m_ui->setupUi(this);
-  setWindowTitle(tr("WrkzCoin Wallet %1").arg(Settings::instance().getVersion()));
+  setWindowTitle(tr("DyngeCoin Wallet %1").arg(Settings::instance().getVersion()));
   m_addRecipientAction->setObjectName("m_addRecipientAction");
   m_cryptoNoteAdapter->addObserver(this);
   m_cryptoNoteAdapter->getNodeAdapter()->getWalletAdapter()->addObserver(this);

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=DyngeCoin Wallet
+Comment=DyngeCoin wallet
+Exec=dyngecoinwallet %U
+Terminal=false
+Type=Application
+Icon=dyngecoin
+MimeType=x-scheme-handler/dyngecoin;
+Categories=Office;Finance;

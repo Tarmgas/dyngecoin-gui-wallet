@@ -27,7 +27,7 @@ namespace WalletGui {
 
 namespace {
 
-const char PAYMENT_SERVER_NAME[] = "wrkzcoin-payment-server-YrmF1jZEv5ahqXuD99d5H1jXQ";
+const char PAYMENT_SERVER_NAME[] = "dyngecoin-payment-server-YrmF1jZEv5ahqXuD99d5H1jXQ";
 
 }
 

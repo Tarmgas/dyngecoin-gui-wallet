@@ -64,7 +64,7 @@ const char OPTION_CLOSE_TO_TRAY[] = "closeToTray";
 const char OPTION_PRIVACY_PARAMS[] = "privacyParams";
 const char OPTION_PRIVACY_NEWS_ENABLED[] = "newsEnabled";
 
-const char DEFAULT_WALLET_FILE_NAME[] = "wrkzcoinwallet.wallet";
+const char DEFAULT_WALLET_FILE_NAME[] = "dyngecoinwallet.wallet";
 const quint64 DEFAULT_OPTIMIZATION_PERIOD = 1000 * 60 * 30; // 30 minutes
 const quint64 DEFAULT_OPTIMIZATION_THRESHOLD = 10000000000000;
 const quint64 DEFAULT_OPTIMIZATION_MIXIN = 6;
@@ -72,8 +72,8 @@ const quint64 DEFAULT_OPTIMIZATION_MIXIN = 6;
 const char OPTION_LANGUAGE[] = "Language"; // Language
 
 const quint64 VERSION_MAJOR = 0;
-const quint64 VERSION_MINOR = 1;
-const quint64 VERSION_PATCH = 2.8;
+const quint64 VERSION_MINOR = 0;
+const quint64 VERSION_PATCH = 1.0;
 
 }
 
@@ -84,7 +84,7 @@ Settings& Settings::instance() {
 
 
 Settings::Settings() : m_p2pBindPort(0), m_cmdLineParser(nullptr) {
-  m_defaultPoolList << "mining-us.wrkz.work:4444" << "mining-sg.wrkz.work:4444" << "mining-eu.wrkz.work:4444";
+  m_defaultPoolList << "dyngepeng.zapto.org:6003" << "dyngepeng.zapto.org:6004" << "dyngepeng.zapto.org:6005";
 
   Style* lightStyle = new LightStyle();
   Style* darkStyle = new DarkStyle();
@@ -109,7 +109,7 @@ void Settings::setCommandLineParser(CommandLineParser* _cmdLineParser) {
 }
 
 void Settings::init() {
-  QFile cfgFile(getDataDir().absoluteFilePath("wrkzcoinwallet.cfg"));
+  QFile cfgFile(getDataDir().absoluteFilePath("dyngecoinwallet.cfg"));
   if (cfgFile.open(QIODevice::ReadOnly)) {
     m_settings = QJsonDocument::fromJson(cfgFile.readAll()).object();
     cfgFile.close();
@@ -511,11 +511,11 @@ bool Settings::isStartOnLoginEnabled() const {
     return false;
   }
 
-  QString autorunFilePath = autorunDir.absoluteFilePath("wrkzcoinwallet.desktop");
+  QString autorunFilePath = autorunDir.absoluteFilePath("dyngecoinwallet.desktop");
   res = QFile::exists(autorunFilePath);
 #elif defined(Q_OS_WIN)
   QSettings autorunSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-  QString keyName = "WrkzCoinWallet";
+  QString keyName = "DyngeCoinWallet";
   res = autorunSettings.contains(keyName) &&
     !QDir::fromNativeSeparators(autorunSettings.value(keyName).toString()).compare(QCoreApplication::applicationFilePath());
 #endif
@@ -680,10 +680,10 @@ void Settings::setStartOnLoginEnabled(bool _enable) {
       return;
     }
 
-    QString autorunFilePath = autorunDir.absoluteFilePath("wrkzcoinwallet.plist");
+    QString autorunFilePath = autorunDir.absoluteFilePath("dyngecoinwallet.plist");
     QSettings autorunSettings(autorunFilePath, QSettings::NativeFormat);
     autorunSettings.remove("Program");
-    autorunSettings.setValue("Label", "work.wrkz.wallet-gui");
+    autorunSettings.setValue("Label", "work.dynge.wallet-gui");
     //autorunSettings.setValue("ProgramArguments", QVariantList() << QCoreApplication::applicationFilePath() << "--minimized");
 	autorunSettings.setValue("ProgramArguments", QVariantList() << QCoreApplication::applicationFilePath());
     autorunSettings.setValue("RunAtLoad", _enable);
@@ -703,7 +703,7 @@ void Settings::setStartOnLoginEnabled(bool _enable) {
       return;
     }
 
-    QString autorunFilePath = autorunDir.absoluteFilePath("wrkzcoinwallet.desktop");
+    QString autorunFilePath = autorunDir.absoluteFilePath("dyngecoinwallet.desktop");
     QFile autorunFile(autorunFilePath);
     if (!autorunFile.open(QFile::WriteOnly | QFile::Truncate)) {
       return;
@@ -712,7 +712,7 @@ void Settings::setStartOnLoginEnabled(bool _enable) {
     if (_enable) {
       autorunFile.write("[Desktop Entry]\n");
       autorunFile.write("Type=Application\n");
-      autorunFile.write("Name=WrkzCoin Wallet\n");
+      autorunFile.write("Name=DyngeCoin Wallet\n");
       //autorunFile.write(QString("Exec=%1 --minimized\n").arg(QCoreApplication::applicationFilePath()).toLocal8Bit());
 	  autorunFile.write(QString("Exec=%1\n").arg(QCoreApplication::applicationFilePath()).toLocal8Bit());
       autorunFile.write("Terminal=false\n");
@@ -723,7 +723,7 @@ void Settings::setStartOnLoginEnabled(bool _enable) {
     }
 #elif defined(Q_OS_WIN)
     QSettings autorunSettings("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Run", QSettings::NativeFormat);
-	QString keyName = "WrkzCoinWallet";
+	QString keyName = "DyngeCoinWallet";
     if (_enable) {
       //QString appPath = QString("%1 --minimized").arg(QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
 	  QString appPath = QString("%1").arg(QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
@@ -964,19 +964,19 @@ void Settings::removeObserver(ISettingsObserver* _settingsObserver) {
 #ifdef Q_OS_WIN
 void Settings::setUrlHandler() {
   QWriteLocker lock(&m_lock);
-  QSettings protocolSettings("HKEY_CURRENT_USER\\Software\\Classes\\wrkzcoin", QSettings::NativeFormat);
-  protocolSettings.setValue(".", "URL:wrkzcoin");
+  QSettings protocolSettings("HKEY_CURRENT_USER\\Software\\Classes\\dyngecoin", QSettings::NativeFormat);
+  protocolSettings.setValue(".", "URL:dyngecoin");
   protocolSettings.setValue("URL Protocol", "");
-  QSettings iconSettings("HKEY_CURRENT_USER\\Software\\Classes\\wrkzcoin\\DefaultIcon", QSettings::NativeFormat);
+  QSettings iconSettings("HKEY_CURRENT_USER\\Software\\Classes\\dyngecoin\\DefaultIcon", QSettings::NativeFormat);
   iconSettings.setValue(".", QDir::toNativeSeparators(QCoreApplication::applicationFilePath()));
-  QSettings openSettings("HKEY_CURRENT_USER\\Software\\Classes\\wrkzcoin\\shell\\open\\command", QSettings::NativeFormat);
+  QSettings openSettings("HKEY_CURRENT_USER\\Software\\Classes\\dyngecoin\\shell\\open\\command", QSettings::NativeFormat);
   QString commandString("\"%1\" \"%2\"");
   openSettings.setValue(".", commandString.arg(QDir::toNativeSeparators(QCoreApplication::applicationFilePath())).arg("%1"));
 }
 #endif
 
 void Settings::saveSettings() const {
-  QFile cfgFile(QDir(m_cmdLineParser->getDataDir()).absoluteFilePath("wrkzcoinwallet.cfg"));
+  QFile cfgFile(QDir(m_cmdLineParser->getDataDir()).absoluteFilePath("dyngecoinwallet.cfg"));
   if (cfgFile.open(QIODevice::WriteOnly | QIODevice::Truncate)) {
     QJsonDocument cfg_doc(m_settings);
     cfgFile.write(cfg_doc.toJson());

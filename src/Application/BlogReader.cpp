@@ -33,9 +33,9 @@ namespace WalletGui {
 
 namespace {
 
-const char BLOG_RSS_SCHEME[] = "https";
-const char BLOG_RSS_HOST[] = "wrkz.work";
-const char BLOG_RSS_PATH[] = "/syndication.php?type=rss";
+const char BLOG_RSS_SCHEME[] = "http";
+const char BLOG_RSS_HOST[] = "dyngepeng.zapto.org";
+const char BLOG_RSS_PATH[] = "/dyngesyndication.php?type=rss";
 
 const char BLOG_RSS_ID_TAG_NAME[] = "id";
 const char BLOG_RSS_LINK_TAG_NAME[] = "link";
@@ -58,7 +58,7 @@ BlogReader::~BlogReader() {
 }
 
 QString BlogReader::getName() const {
-  return tr("WrkzCoin Blog:");
+  return tr("DyngeCoin Blog:");
 }
 
 QPixmap BlogReader::getIcon() const {

@@ -98,13 +98,13 @@
     </qresource>
     <qresource prefix="/images">
         <file alias="splash">images/splash.png</file>
-        <file alias="wrkzcoin_lin">images/wrkzcoin.png</file>
+        <file alias="dyngecoin_lin">images/dyngecoin.png</file>
         <file alias="add_address_helper">images/add_address_helper.png</file>
-        <file alias="wrkzcoin_mac">images/wrkzcoin.icns</file>
-        <file alias="wrkzcoin_win">images/wrkzcoin.ico</file>
+        <file alias="dyngecoin_mac">images/dyngecoin.icns</file>
+        <file alias="dyngecoin_win">images/dyngecoin.ico</file>
     </qresource>
     <qresource prefix="/style">
-        <file alias="qss">wrkzcoinwallet.qss</file>
+        <file alias="qss">dyngecoinwallet.qss</file>
     </qresource>
     <qresource prefix="/font">
         <file alias="Bold">font/OpenSans-Bold.ttf</file>

@@ -1,15 +1,15 @@
 #define STR_HELPER(x) #x
 #define STR(x) STR_HELPER(x)
 
-#define PROJECT_NAME "WRKZCoin"
-#define PROJECT_SITE "http://www.wrkz.work"
-#define PROJECT_COPYRIGHT "Copyright 2018, The Wrkz Developers"
+#define PROJECT_NAME "DyngeCoin"
+#define PROJECT_SITE "http://dyngepeng.zapto.org"
+#define PROJECT_COPYRIGHT "Copyright 2019, The Dynge Developers"
 #define APP_VER_MAJOR 0
-#define APP_VER_MINOR 1
-#define APP_VER_REV 2
-#define APP_VER_BUILD 8
+#define APP_VER_MINOR 0
+#define APP_VER_REV 1
+#define APP_VER_BUILD 0
 
-#define BUILD_COMMIT_ID "0.1.2.8"
+#define BUILD_COMMIT_ID "0.0.1.0"
 #define PROJECT_VERSION STR(APP_VER_MAJOR) "." STR(APP_VER_MINOR) "." STR(APP_VER_REV)
 #define PROJECT_VERSION_BUILD_NO STR(APP_VER_BUILD)
 #define PROJECT_VERSION_LONG PROJECT_VERSION "." PROJECT_VERSION_BUILD_NO " (" BUILD_COMMIT_ID ")"

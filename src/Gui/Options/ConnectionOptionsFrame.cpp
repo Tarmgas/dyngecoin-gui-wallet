@@ -73,7 +73,7 @@ void ConnectionOptionsFrame::load() {
   QUrl remoteUrl = Settings::instance().getRemoteRpcUrl();
   if (remoteUrl.isEmpty()) {
 	// Set default remote node
-	m_ui->m_remoteHostEdit->setText("wrkz-nodes.wrkz.work");
+	m_ui->m_remoteHostEdit->setText("dyngepeng.zapto.org");
     m_ui->m_remotePortSpin->setValue(CryptoNote::RPC_DEFAULT_PORT);
   } else {
 	m_ui->m_remoteHostEdit->setText(remoteUrl.host());

@@ -48,7 +48,7 @@ public:
     QAction *m_openWalletAction;
     QAction *m_encryptWalletAction;
     QAction *m_changePasswordAction;
-    QAction *m_aboutWrkzCoinAction;
+    QAction *m_aboutDyngeCoinAction;
     QAction *m_aboutQtAction;
     QAction *m_backupWalletAction;
     QAction *m_autostartAction;
@@ -143,7 +143,7 @@ public:
         MainWindow->setMinimumSize(QSize(1260, 600));
         MainWindow->setMaximumSize(QSize(16777215, 16777215));
         QIcon icon;
-        icon.addFile(QStringLiteral(":/images/wrkzcoin"), QSize(), QIcon::Normal, QIcon::Off);
+        icon.addFile(QStringLiteral(":/images/dyngecoin"), QSize(), QIcon::Normal, QIcon::Off);
         MainWindow->setWindowIcon(icon);
         m_exitAction = new QAction(MainWindow);
         m_exitAction->setObjectName(QStringLiteral("m_exitAction"));
@@ -161,9 +161,9 @@ public:
         m_changePasswordAction = new QAction(MainWindow);
         m_changePasswordAction->setObjectName(QStringLiteral("m_changePasswordAction"));
         m_changePasswordAction->setEnabled(true);
-        m_aboutWrkzCoinAction = new QAction(MainWindow);
-        m_aboutWrkzCoinAction->setObjectName(QStringLiteral("m_aboutWrkzCoinAction"));
-        m_aboutWrkzCoinAction->setEnabled(true);
+        m_aboutDyngeCoinAction = new QAction(MainWindow);
+        m_aboutDyngeCoinAction->setObjectName(QStringLiteral("m_aboutDyngeCoinAction"));
+        m_aboutDyngeCoinAction->setEnabled(true);
         m_aboutQtAction = new QAction(MainWindow);
         m_aboutQtAction->setObjectName(QStringLiteral("m_aboutQtAction"));
         m_aboutQtAction->setEnabled(true);
@@ -598,7 +598,7 @@ public:
         menuSettings->addAction(menuThemes->menuAction());
         menuHelp->addAction(m_communityForumAction);
         menuHelp->addAction(m_reportIssueAction);
-        menuHelp->addAction(m_aboutWrkzCoinAction);
+        menuHelp->addAction(m_aboutDyngeCoinAction);
 		menuHelp->addSeparator();
         menuHelp->addAction(m_aboutQtAction);
 
@@ -609,7 +609,7 @@ public:
         QObject::connect(m_changePasswordAction, SIGNAL(triggered()), MainWindow, SLOT(encryptWallet()));
         QObject::connect(m_aboutQtAction, SIGNAL(triggered()), MainWindow, SLOT(aboutQt()));
         QObject::connect(m_backupWalletAction, SIGNAL(triggered()), MainWindow, SLOT(backupWallet()));
-        QObject::connect(m_aboutWrkzCoinAction, SIGNAL(triggered()), MainWindow, SLOT(about()));
+        QObject::connect(m_aboutDyngeCoinAction, SIGNAL(triggered()), MainWindow, SLOT(about()));
         QObject::connect(m_overviewButton, SIGNAL(toggled(bool)), m_overviewFrame, SLOT(setVisible(bool)));
         QObject::connect(m_transactionsButton, SIGNAL(toggled(bool)), m_transactionsFrame, SLOT(setVisible(bool)));
         QObject::connect(m_addressBookButton, SIGNAL(toggled(bool)), m_addressBookFrame, SLOT(setVisible(bool)));
@@ -647,7 +647,7 @@ public:
 #ifndef QT_NO_TOOLTIP
         m_changePasswordAction->setToolTip(QApplication::translate("MainWindow", "Change password", 0));
 #endif // QT_NO_TOOLTIP
-        m_aboutWrkzCoinAction->setText(QApplication::translate("MainWindow", "About WrkzCoin", 0));
+        m_aboutDyngeCoinAction->setText(QApplication::translate("MainWindow", "About DyngeCoin", 0));
         m_aboutQtAction->setText(QApplication::translate("MainWindow", "About Qt", 0));
         m_backupWalletAction->setText(QApplication::translate("MainWindow", "Backup wallet", 0));
         m_autostartAction->setText(QApplication::translate("MainWindow", "Start on system login", 0));
@@ -697,7 +697,7 @@ public:
         m_balanceCopyLabel->setText(QApplication::translate("MainWindow", "Copied!", 0));
         m_balanceIconLabel->setText(QString());
         m_overviewButton->setText(QApplication::translate("MainWindow", "OVERVIEW", 0));
-        m_sendButton->setText(QApplication::translate("MainWindow", "SEND WRKZCOIN", 0));
+        m_sendButton->setText(QApplication::translate("MainWindow", "SEND DYNGECOIN", 0));
         m_transactionsButton->setText(QApplication::translate("MainWindow", "TRANSACTIONS", 0));
         m_blockExplorerButton->setText(QApplication::translate("MainWindow", "BLOCK EXPLORER", 0));
         m_addressBookButton->setText(QApplication::translate("MainWindow", "CONTACTS", 0));

@@ -146,7 +146,7 @@ public:
 "  border-color: #ef3131;\n"
 "}"));
         m_sendAmountSpin->setButtonSymbols(QAbstractSpinBox::UpDownArrows);
-        m_sendAmountSpin->setSuffix(QStringLiteral("Wrkz"));
+        m_sendAmountSpin->setSuffix(QStringLiteral("Dynge"));
         m_sendAmountSpin->setDecimals(2);
         m_sendAmountSpin->setMaximum(1e+9);
 

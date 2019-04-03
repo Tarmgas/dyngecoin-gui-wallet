@@ -56,7 +56,7 @@ const quint32 BYTECOIN_BLOCK_SIZE = 0xd5;
 }
 
 BlockchainInstaller::BlockchainInstaller(QObject* _parent) : QObject(_parent), m_blockIndexesFileName("blockindexes.dat"), m_blocksFileName("blocks.dat"),
-  m_wrkzcoinDir(Settings::instance().getDataDir().absolutePath()), m_applicationDir(QDir::current()) {
+  m_dyngecoinDir(Settings::instance().getDataDir().absolutePath()), m_applicationDir(QDir::current()) {
 }
 
 BlockchainInstaller::~BlockchainInstaller() {
@@ -67,20 +67,20 @@ void BlockchainInstaller::exec() {
     return;
   }
 
-  if (!checkIfWrkzCoinBlockchainExists()) {
+  if (!checkIfDyngeCoinBlockchainExists()) {
     installBlockchain();
     return;
   }
 
   quint64 currentHeight;
-  quint64 wrkzcoinHeight;
-  if (!checkIfBlockchainOutdated(currentHeight, wrkzcoinHeight)) {
+  quint64 dyngecoinHeight;
+  if (!checkIfBlockchainOutdated(currentHeight, dyngecoinHeight)) {
     return;
   }
 
   QString questionStringTemplate = tr("Would you like to replace your current blockchain (height: %1)\nwith the one in your GUI wallet folder (height: %2)?");
 
-  QuestionDialog dlg(tr("Blockchain installation"), QString(questionStringTemplate).arg(wrkzcoinHeight).arg(currentHeight), nullptr);
+  QuestionDialog dlg(tr("Blockchain installation"), QString(questionStringTemplate).arg(dyngecoinHeight).arg(currentHeight), nullptr);
   if (dlg.exec() == QDialog::Accepted) {
     installBlockchain();
   }
@@ -134,15 +134,15 @@ bool BlockchainInstaller::getGenesisBlockFromBlockchain(char** _genesisBlockData
   return true;
 }
 
-bool BlockchainInstaller::checkIfWrkzCoinBlockchainExists() const {
-  return m_wrkzcoinDir.exists() && m_wrkzcoinDir.exists(m_blocksFileName);
+bool BlockchainInstaller::checkIfDyngeCoinBlockchainExists() const {
+  return m_dyngecoinDir.exists() && m_dyngecoinDir.exists(m_blocksFileName);
 }
 
 bool BlockchainInstaller::checkIfBlockchainOutdated(quint64& _sourceHeight, quint64& _targetHeight) const {
   quint32 sourceHeight(0);
   quint32 targetHeight(0);
   QFile sourceBlockIndexesFile(m_applicationDir.absoluteFilePath(m_blockIndexesFileName));
-  QFile targetBlockIndexesFile(m_wrkzcoinDir.absoluteFilePath(m_blockIndexesFileName));
+  QFile targetBlockIndexesFile(m_dyngecoinDir.absoluteFilePath(m_blockIndexesFileName));
   if (!sourceBlockIndexesFile.open(QIODevice::ReadOnly) || !targetBlockIndexesFile.open(QIODevice::ReadOnly)) {
     return false;
   }
@@ -162,8 +162,8 @@ QFileInfo BlockchainInstaller::currentBlockchainInfo() const {
   return QFileInfo(m_applicationDir.absoluteFilePath(m_blocksFileName));
 }
 
-QFileInfo BlockchainInstaller::wrkzcoinBlockchainInfo() const {
-  return QFileInfo(m_wrkzcoinDir.absoluteFilePath(m_blocksFileName));
+QFileInfo BlockchainInstaller::dyngecoinBlockchainInfo() const {
+  return QFileInfo(m_dyngecoinDir.absoluteFilePath(m_blocksFileName));
 }
 
 void BlockchainInstaller::copyProgress(quint64 _copied, quint64 _total) {
@@ -172,7 +172,7 @@ void BlockchainInstaller::copyProgress(quint64 _copied, quint64 _total) {
 
 void BlockchainInstaller::installBlockchain() {
   Q_EMIT showMessageSignal(tr("Copying blockchain files..."));
-  m_wrkzcoinDir.mkpath(".");
+  m_dyngecoinDir.mkpath(".");
   QThread workerThread;
   AsyncFileProcessor fp;
   fp.moveToThread(&workerThread);
@@ -184,14 +184,14 @@ void BlockchainInstaller::installBlockchain() {
   connect(&fp, &AsyncFileProcessor::errorSignal, &waitLoop, &QEventLoop::exit);
 
   Q_EMIT copyFileSignal(m_applicationDir.absoluteFilePath(m_blockIndexesFileName),
-    m_wrkzcoinDir.absoluteFilePath(m_blockIndexesFileName));
+    m_dyngecoinDir.absoluteFilePath(m_blockIndexesFileName));
   if (waitLoop.exec() != 0) {
     workerThread.quit();
     workerThread.wait();
     return;
   }
 
-  Q_EMIT copyFileSignal(m_applicationDir.absoluteFilePath(m_blocksFileName), m_wrkzcoinDir.absoluteFilePath(m_blocksFileName));
+  Q_EMIT copyFileSignal(m_applicationDir.absoluteFilePath(m_blocksFileName), m_dyngecoinDir.absoluteFilePath(m_blocksFileName));
   if (waitLoop.exec() != 0) {
     workerThread.quit();
     workerThread.wait();
