@@ -54,6 +54,8 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
     cryptonote/src
     )
 
+set (CMAKE_PREFIX_PATH "C:\\Qt\\5.12.2\\msvc2015_64\\")
+
 find_package(Qt5 REQUIRED
     Gui
     Widgets
