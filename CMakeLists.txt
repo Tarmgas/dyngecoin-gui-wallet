@@ -297,6 +297,6 @@ if(NOT MSVC)
   set_directory_properties(PROPERTIES ADDITIONAL_MAKE_CLEAN_FILES "${PROJECT_BINARY_DIR}/rocksdb/librocksdb.a")
 endif()
 
-configure_file("cryptonote/src/version.h.in" "version.h")
-configure_file("cryptonote/src/version.h.in" ${CMAKE_SOURCE_DIR}/src/version.h)
+configure_file("cryptonote/src/config/version.h.in" "version.h")
+configure_file("cryptonote/src/config/version.h.in" ${CMAKE_SOURCE_DIR}/src/version.h)
 configure_file("src/CryptoNoteWalletConfig.h.in" "CryptoNoteWalletConfig.h")
