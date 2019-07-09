@@ -2,7 +2,7 @@
 #define STR(x) STR_HELPER(x)
 
 #define PROJECT_NAME "DyngeCoin"
-#define PROJECT_SITE "http://dyngepeng.zapto.org"
+#define PROJECT_SITE "http://dyngecoin.com/"
 #define PROJECT_COPYRIGHT "Copyright 2019, The Dynge Developers"
 #define APP_VER_MAJOR 0
 #define APP_VER_MINOR 0

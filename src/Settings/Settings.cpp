@@ -64,10 +64,10 @@ const char OPTION_CLOSE_TO_TRAY[] = "closeToTray";
 const char OPTION_PRIVACY_PARAMS[] = "privacyParams";
 const char OPTION_PRIVACY_NEWS_ENABLED[] = "newsEnabled";
 
-const char DEFAULT_WALLET_FILE_NAME[] = "dyngecoinwallet.wallet";
+const char DEFAULT_WALLET_FILE_NAME[] = "dyngecoin.wallet";
 const quint64 DEFAULT_OPTIMIZATION_PERIOD = 1000 * 60 * 30; // 30 minutes
 const quint64 DEFAULT_OPTIMIZATION_THRESHOLD = 10000000000000;
-const quint64 DEFAULT_OPTIMIZATION_MIXIN = 6;
+const quint64 DEFAULT_OPTIMIZATION_MIXIN = 3;
 
 const char OPTION_LANGUAGE[] = "Language"; // Language
 
@@ -84,7 +84,7 @@ Settings& Settings::instance() {
 
 
 Settings::Settings() : m_p2pBindPort(0), m_cmdLineParser(nullptr) {
-  m_defaultPoolList << "dyngepeng.zapto.org:6003" << "dyngepeng.zapto.org:6004" << "dyngepeng.zapto.org:6005";
+  m_defaultPoolList << "dyngepeng.zapto.org:4551" << "poolice.sytes.net:4561" << "firsty.ddns.net:7769";
 
   Style* lightStyle = new LightStyle();
   Style* darkStyle = new DarkStyle();
