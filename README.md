@@ -47,7 +47,17 @@ Change the path of where `windeployqt` you installed Qt. Qt necessary dll files 
 * Complete.
 
 ### Build with Linux
-[Will write]
+
+    sudo apt-get update && sudo apt-get upgrade --yes
+    
+    git clone https://github.com/Tarmgas/dyngecoin-gui-wallet
+   
+    git clone https://github.com/Tarmgas/dyngecoin cryptonote
+
+    mkdir build && cd $_
+    cmake ..
+    make -j4
+
 
 ### Credit
 Thanks to Cryptonote Developers, Bytecoin Developers, Monero Developers, Forknote Project, TurtleCoin Project Wrkzcoin Project and specifically to
