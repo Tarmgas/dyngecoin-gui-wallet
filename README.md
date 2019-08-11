@@ -62,7 +62,7 @@ sudo apt install qtbase5-dev
 
     mkdir build && cd $_
     cmake ..
-    make -j4
+    make -j4                  if error:      make VERBOSE=1 -j4
 
 
 ### Credit
