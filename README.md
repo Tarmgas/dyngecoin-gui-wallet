@@ -47,6 +47,12 @@ Change the path of where `windeployqt` you installed Qt. Qt necessary dll files 
 * Complete.
 
 ### Build with Linux
+Install boost and qt
+BOOST
+sudo apt-get install -y build-essential python-dev gcc g++ git cmake libboost-all-dev
+
+QT
+sudo apt install qtbase5-dev
 
     sudo apt-get update && sudo apt-get upgrade --yes
     
