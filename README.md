@@ -51,7 +51,7 @@ Change the path of where `windeployqt` you installed Qt. Qt necessary dll files 
     sudo apt-get update && sudo apt-get upgrade --yes
     
     git clone https://github.com/Tarmgas/dyngecoin-gui-wallet
-   
+    cd dyngecoin-gui-wallet
     git clone https://github.com/Tarmgas/dyngecoin cryptonote
 
     mkdir build && cd $_
