@@ -33,6 +33,7 @@ Install these:
 . Build the binaries shall be 
 `dyngecoin-gui-wallet/build/`
 * Click Configure and select Visual Studio 2017 (64). Fix Qt lib paths and libboost path and re-configure again.
+Example: `C:\Qt\Qt5.12.0\5.12.0\msvc2017_64\lib\cmake\Qt5`
 * Click Generate button. CMake will generate DyngeCoin-GUI.sln within 
 `dyngecoin-gui-wallet/build/`
 * Launch `x64 Native Tools Command Prompt for VS 2017` (64 bits) or `x86 Native Tools Command Prompt for VS 2017` (32 bits) and change working directory to 
