@@ -17,7 +17,7 @@
 ### Build with Windows
 #### Prerequisite
 Install these:
-* Microsoft Visual Studio 2017 Community Edition
+* Microsoft Visual Studio 2017 Community Edition (individual VC++2015 140 and Visual C++ for CMAKE
 * CMake 3.12 (Preferably GUI version) trying with v3.16
 * Boost 1.65  140 64bit. You can get the compiled version from https://sourceforge.net/projects/boost/files/boost-binaries/
 * Qt 5.10.x (32 or 63 bits depend on your build). If you can not find the binary for MSVC 2017, download 2015 version.
