@@ -49,12 +49,13 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}
     src
     include
     cryptonote/external
+    cryptonote/external/nlohmann-json
     cryptonote/external/rocksdb/include/
     cryptonote/include
     cryptonote/src
     )
 
-set (CMAKE_PREFIX_PATH "C:\\Qt\\5.12.2\\msvc2015_64\\")
+set (CMAKE_PREFIX_PATH "C:\\Qt\\5.11.0\\msvc2017_64\\")
 
 find_package(Qt5 REQUIRED
     Gui
@@ -280,14 +281,14 @@ set_target_properties(${PROJECT_NAME} PROPERTIES COMPILE_DEFINITIONS _GNU_SOURCE
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES} ${QTMAIN} ${CRYPTONOTE_LIB} ${Qt5DBus_LIBRARIES} Mnemonics)
 
 if (APPLE)
-    qt5_use_modules(${PROJECT_NAME} PrintSupport)
+    target_link_libraries(${PROJECT_NAME} PrintSupport)
 elseif (UNIX)
     target_link_libraries(${PROJECT_NAME} -lpthread)
 elseif (WIN32)
     target_link_libraries(${PROJECT_NAME} rpcrt4.lib wtsapi32.lib  Imm32 Iphlpapi Winmm)
 endif (APPLE)
 
-qt5_use_modules(${PROJECT_NAME} Widgets Gui Network)
+target_link_libraries(${PROJECT_NAME} Widgets Gui Network)
 add_subdirectory(cryptonote/external)
 
 if(NOT MSVC)
